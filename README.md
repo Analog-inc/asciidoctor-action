@@ -38,7 +38,7 @@ jobs:
     - name: Save AsciiDoc step
       uses: actions/upload-artifact@v1
       with:
-        name: manifest
+        name: documents
         path: ./
         
 ```
