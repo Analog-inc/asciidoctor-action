@@ -1,5 +1,5 @@
 # action.yml
-name: 'AsciiDoctor'
+name: 'Build AsciiDoc Action'
 description: 'AsciiDoc Build action'
 inputs:
     shellcommand:  # id of input
