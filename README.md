@@ -29,7 +29,7 @@ jobs:
       uses: actions/checkout@v2
     - name: Build AsciiDoc step
       id: documents
-      uses: Analog-inc/build-asciidoc@master
+      uses: Analog-inc/asciidoctor-action@master
       with:
         shellcommand: "asciidoctor index.adoc" 
     # Use the output from the documents step
