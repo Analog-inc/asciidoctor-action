@@ -1,20 +1,22 @@
 # Asciidoctor docker action
 
-このアクションはasciidoctorでビルドします
+You can use Asciidoctor command easily if you use this action
 
 ## Inputs
 
 ### `shellcommand`
 
-**required** 出力コマンド 'asciidoctor index.adoc'。
+**required** 
+bash command   
+default 'asciidoctor index.adoc'
 
-## 出力
+## Output
 
 ### `time`
 
-完了した時間。
+complete time
 
-## 使用例
+## sample
 ```
 name: CI
 
@@ -32,9 +34,9 @@ jobs:
       uses: Analog-inc/asciidoctor-action@master
       with:
         shellcommand: "asciidoctor index.adoc" 
-    # Use the output from the documents step
     - name: Get the output time
       run: echo "The time was ${{ steps.documents.outputs.time }}"
+    # Save the AsciiDoc step
     - name: Save AsciiDoc step
       uses: actions/upload-artifact@v1
       with:
