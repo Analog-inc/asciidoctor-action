@@ -29,7 +29,7 @@ jobs:
       uses: actions/checkout@v2
     - name: Build AsciiDoc step
       id: documents
-      uses: naohito-analog/build-asciidoc@master
+      uses: Analog-inc/build-asciidoc@master
       with:
         shellcommand: "asciidoctor index.adoc" 
     # Use the output from the documents step
