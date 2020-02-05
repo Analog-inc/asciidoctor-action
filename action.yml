@@ -1,5 +1,8 @@
 # action.yml
 name: 'Build AsciiDoc Action'
+branding:
+  icon: 'book-open'  
+  color: 'white'
 description: 'AsciiDoc Build action'
 inputs:
     shellcommand:  # id of input
