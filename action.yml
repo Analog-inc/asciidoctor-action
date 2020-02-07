@@ -9,9 +9,7 @@ inputs:
         description: 'AsciiDoc Build command'
         required: true
         default: 'asciidoctor index.adoc'
-outputs:
-    time: # id of output
-        description: 'Build Finish Time'
+
 runs:
     using: 'docker'
     image: 'Dockerfile'
