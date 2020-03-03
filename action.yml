@@ -1,5 +1,5 @@
 # action.yml
-name: 'Build AsciiDoc Action'
+name: 'Build AsciiDoctor Docker Action'
 branding:
   icon: 'book-open'  
   color: 'white'
