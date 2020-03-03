@@ -1,0 +1,40 @@
+name: CI
+
+on: [push]
+
+jobs:
+  asciidoctor_job:
+    runs-on: ubuntu-latest
+    name: Build AsciiDoctor
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+      ## https://github.com/actions/checkout
+      # with:
+      # Default: ${{ github.repository }}
+      # repository: ''
+      # Otherwise, defaults to `master`.
+      # ref: ''
+      # Default: ${{ github.token }}
+      # token: ''
+      # Default: true
+      # persist-credentials: ''
+      # Relative path under $GITHUB_WORKSPACE to place the repository
+      # path: ''
+      # Default: true
+      # clean: ''
+      # Default: 1
+      # fetch-depth: ''
+      # Default: false
+      # lfs: ''
+    - name: Build AsciiDoc step
+      id: documents
+      uses: Analog-inc/asciidoctor-action@master
+      with:
+        shellcommand: "./.github/workflows/asciidoc.sh" 
+    # Use the output from the documents step
+    - name: Save AsciiDoc step
+      uses: actions/upload-artifact@v1
+      with:
+        name: Docs
+        path: ./outputs/
