@@ -1,35 +1,35 @@
-# Asciidoctor docker action
+= Asciidoctor docker action
 
 You can use Asciidoctor command easily if you use this action
 
-## Inputs
+== Inputs
 
-### `shellcommand`
+=== `shellcommand`
 
-**required** 
-bash command   
+**required**
+bash command +
 default 'asciidoctor index.adoc'
 
-## Example
+== Example
 
-### Example Nomal
-```
+=== Example Nomal
+
+.workflow.yml
+....
 steps:
 - name: Build AsciiDoc step
   id: documents
   uses: Analog-inc/asciidoctor-action@master
   with:
-    shellcommand: "asciidoctor index.adoc" 
-```
+    shellcommand: "asciidoctor index.adoc"
+....
 
-### Example shell script
+=== Example shell script
 
 Copy [into.github/workflows] to your repository [.github/workflows]
 
 .github/workflows/asciidoc.sh
-
-
-```
+....
 #!/bin/bash
 set -e
 
@@ -41,7 +41,7 @@ CURRENT_PATH=`pwd`
 ASCIIDOCTOR_PDF_DIR=`gem contents asciidoctor-pdf --show-install-dir`
 
 # cp "${ASCIIDOCTOR_PDF_DIR}/data/themes/default-theme.yml" ${CURRENT_PATH}/themes/default-theme.yml
-#  cp -r -f "${ASCIIDOCTOR_PDF_DIR}/data/fonts/" ${CURRENT_PATH}/  
+#  cp -r -f "${ASCIIDOCTOR_PDF_DIR}/data/fonts/" ${CURRENT_PATH}/
 
 # -a, --attribute=ATTRIBUTE
 # -B, --base-dir=DIR
@@ -59,10 +59,10 @@ asciidoctor-pdf -B ${CURRENT_PATH}/ -D ${CURRENT_PATH}/outputs/pdf/ -o index.pdf
 
 
 asciidoctor-epub3 -B ${CURRENT_PATH}/ -D ${CURRENT_PATH}/outputs/ebub/ -o index.epub  -r asciidoctor-diagram -a imagesdir=${CURRENT_PATH}/images   index.adoc
-```
+....
 
 .github/workflows/main.yml
-```
+....
 name: CI
 
 on: [push]
@@ -96,11 +96,11 @@ jobs:
       id: documents
       uses: Analog-inc/asciidoctor-action@master
       with:
-        shellcommand: "./.github/workflows/asciidoc.sh" 
+        shellcommand: "./.github/workflows/asciidoc.sh"
     # Use the output from the documents step
     - name: Save AsciiDoc step
       uses: actions/upload-artifact@v1
       with:
         name: Docs
         path: ./outputs/
-```
+....
