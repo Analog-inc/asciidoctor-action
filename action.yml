@@ -1,12 +1,12 @@
 # action.yml
-name: 'Build AsciiDoctor Docker Action'
+name: 'Convert AsciiDoctor Docker Action'
 branding:
   icon: 'book-open'  
   color: 'white'
-description: 'AsciiDoc Build action'
+description: 'AsciiDoc Convert action'
 inputs:
     shellcommand:  # id of input
-        description: 'AsciiDoc Build command'
+        description: 'AsciiDoc Convert command'
         required: true
         default: 'asciidoctor index.adoc'
 
