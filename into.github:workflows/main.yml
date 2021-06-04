@@ -5,7 +5,7 @@ on: [push]
 jobs:
   asciidoctor_job:
     runs-on: ubuntu-latest
-    name: Build AsciiDoctor
+    name: Convert AsciiDoctor
     steps:
     - name: Check out code
       uses: actions/checkout@v2
@@ -27,7 +27,7 @@ jobs:
       # fetch-depth: ''
       # Default: false
       # lfs: ''
-    - name: Build AsciiDoc step
+    - name: Convert AsciiDoc step
       id: documents
       uses: Analog-inc/asciidoctor-action@master
       with:
