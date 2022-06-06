@@ -1,5 +1,5 @@
 # Container image that runs your code
-FROM asciidoctor/docker-asciidoctor
+FROM asciidoctor/docker-asciidoctor:1.18
 
 LABEL "version"="1.0"
 
