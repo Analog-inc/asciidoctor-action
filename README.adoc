@@ -35,15 +35,8 @@ Copy [into.github/workflows] to your repository [.github/workflows]
 #!/bin/bash
 set -e
 
-mkdir -p ./outputs/pdf
-mkdir -p ./outputs/html
-mkdir -p ./outputs/ebub
-
 CURRENT_PATH=`pwd`
 ASCIIDOCTOR_PDF_DIR=`gem contents asciidoctor-pdf --show-install-dir`
-
-# cp "${ASCIIDOCTOR_PDF_DIR}/data/themes/default-theme.yml" ${CURRENT_PATH}/themes/default-theme.yml
-#  cp -r -f "${ASCIIDOCTOR_PDF_DIR}/data/fonts/" ${CURRENT_PATH}/
 
 # -a, --attribute=ATTRIBUTE
 # -B, --base-dir=DIR
@@ -54,13 +47,18 @@ ASCIIDOCTOR_PDF_DIR=`gem contents asciidoctor-pdf --show-install-dir`
 # -d, --doctype=DOCTYPE
 # -r, --require=LIBRARY
 
+# Output HTML
+mkdir -p ./outputs/html
 asciidoctor -B ${CURRENT_PATH}/ -D ${CURRENT_PATH}/outputs/html/ -o index.html -r asciidoctor-diagram index.adoc
 
-
+# Output PDF
+mkdir -p ./outputs/pdf
 asciidoctor-pdf -B ${CURRENT_PATH}/ -D ${CURRENT_PATH}/outputs/pdf/ -o index.pdf -a scripts@=cjk -r asciidoctor-diagram index.adoc
 
-
+# Output ePub
+mkdir -p ./outputs/ebub
 asciidoctor-epub3 -B ${CURRENT_PATH}/ -D ${CURRENT_PATH}/outputs/ebub/ -o index.epub -r asciidoctor-diagram index.adoc
+
 ....
 
 .github/workflows/main.yml
@@ -75,7 +73,7 @@ jobs:
     name: Convert AsciiDoctor
     steps:
     - name: Check out code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       ## https://github.com/actions/checkout
       # with:
       # Default: ${{ github.repository }}

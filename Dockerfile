@@ -1,7 +1,7 @@
 # Container image that runs your code
-FROM asciidoctor/docker-asciidoctor:1.18
+FROM asciidoctor/docker-asciidoctor:1.51
 
-LABEL "version"="1.0"
+LABEL "version"="1.1"
 
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
